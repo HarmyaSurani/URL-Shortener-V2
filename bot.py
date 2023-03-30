@@ -34,7 +34,7 @@ class Bot(Client):
         temp.START_TIME = datetime.datetime.now()
         await super().start()
 
-        UPDATE_CHANNEL:
+        if UPDATE_CHANNEL:
             try:
                 self.invite_link = await self.create_chat_invite_link(UPDATE_CHANNEL)
 
