@@ -34,6 +34,14 @@ class Bot(Client):
         temp.START_TIME = datetime.datetime.now()
         await super().start()
 
+        UPDATE_CHANNEL:
+            try:
+                self.invite_link = await self.create_chat_invite_link(UPDATE_CHANNEL)
+
+        
+        temp.START_TIME = datetime.datetime.now()
+        await super().start()
+
         me = await self.get_me()
         self.owner = await self.get_users(int(OWNER_ID))
         self.username = f"@{me.username}"
