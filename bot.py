@@ -36,17 +36,12 @@ class Bot(Client):
         await super().start()
 
         if UPDATE_CHANNEL:
-try:
-                link = (await self.get_chat(UPDATE_CHANNEL)).invite_link
-                if not link:
-                    await self.export_chat_invite_link(UPDATE_CHANNEL)
-                    link = (await self.get_chat(UPDATE_CHANNEL)).invite_link
-                self.invite_link = link
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel!")
-                self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
-                self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/CodeXBotzSupport for support")
+            try:
+                self.invite_link = await self.export_chat_invite_link(UPDATE_CHANNEL)
+            except Exception:
+                logging.error(
+                    f"Make sure to make the bot in your update channel - {UPDATE_CHANNEL}"
+                )
                 sys.exit(1)
         
         temp.START_TIME = datetime.datetime.now()
