@@ -9,6 +9,7 @@ from pyrogram import Client
 
 
 from config import *
+from config import UPDATE_CHANNEL
 from database import db
 from database.users import filter_users
 from helpers import temp
@@ -36,10 +37,10 @@ class Bot(Client):
 
         if UPDATE_CHANNEL:
             try:
-                self.invite_link = await self.create_chat_invite_link(-1001537277965)
+                self.invite_link = await self.create_chat_invite_link(UPDATE_CHANNEL)
             except Exception:
                 logging.error(
-                    f"Make sure to make the bot in your update channel - {-1001537277965}"
+                    f"Make sure to make the bot in your update channel - {UPDATE_CHANNEL}"
                 )
                 sys.exit(1)
         
