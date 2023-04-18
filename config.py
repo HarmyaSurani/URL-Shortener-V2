@@ -28,7 +28,7 @@ ADMINS = (
 
 DATABASE_NAME = os.environ.get("DATABASE_NAME", "linkshortify")
 DATABASE_URL = os.environ.get(
-    "DATABASE_URL", "mongodb+srv://linkshortifycom:GUN07gun07@linkshortify.vjbokfp.mongodb.net/?retryWrites=true&w=majority"
+    "DATABASE_URL", "mongodb+srv://linkshortifycom:GUN07@gun07@linkshortify.vjbokfp.mongodb.net/?retryWrites=true&w=majority"
 )  # mongodb uri from https://www.mongodb.com/
 OWNER_ID = int(os.environ.get("OWNER_ID", "1446498316"))  # id of the owner
 ADMINS.append(OWNER_ID) if OWNER_ID not in ADMINS else []
